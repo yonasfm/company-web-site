@@ -9,12 +9,8 @@
 <body>
     <%- include('./partials/nav') %>
     <% staff.forEach((member) => { %>
-        <ul>
-            <h3><%=  member.FirstName %> <%= member.LastName  %></h3>
-            <li><%= member.Moniker %></li>
-            <li><%= member.Outie %></li>
-            <li><%= member.Position %></li>
-        </ul>
+        <h3><a href="/staff/<%= member.FirstName %>"><%= member.FirstName %> <%= member.LastName %></a></h3>
     <% }) %>
 </body>
 </html>
+

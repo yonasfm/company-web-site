@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
 
+app.use(express.static('public')); //tells express to try to match requests with files in the directory called 'public'
+
+
 app.get('/', (req, res) => {
   res.send('Hello There!');
 });
 
-
-app.get('/home', (req, res) => {
-    res.render('home.ejs')
+app.get('/careers', (req, res) => {
+    res.render('careers.ejs')
 })
 
 app.get('/severance', (req, res) => {
@@ -62,8 +64,6 @@ const pastLumonCEOs = [
     pastLumonCEOs: pastLumonCEOs
     })
 })
-
-
   const staff = [
     {
       FirstName: 'Mark',
@@ -71,6 +71,7 @@ const pastLumonCEOs = [
       Moniker: 'Mark S.',
       Outie: 'Sad Mark',
       Position: 'Macrodata Refinement Employee',
+      image: '/mark.webp'
     },   
     {
       FirstName: 'Irving',
@@ -78,6 +79,7 @@ const pastLumonCEOs = [
       Moniker: 'Irving B.',
       Outie: 'Irving Bailiff',
       Position: 'Macrodata Refinement Employee',
+      image: '/irving.webp'
     },   
     {
       FirstName: 'Dylan',
@@ -85,6 +87,7 @@ const pastLumonCEOs = [
       Moniker: 'Dylan G.',
       Outie: 'Dylan George',
       Position: 'Macrodata Refinement Employee',
+      image: '/dylan.jpg'
     },   
     {
       FirstName: 'Helly',
@@ -92,6 +95,7 @@ const pastLumonCEOs = [
       Moniker: 'Helly E.',
       Outie: 'Helena Eagan',
       Position: 'Macrodata Refinement Employee',
+      image: '/helly.jpg'
     },   
     {
       FirstName: 'Burt',
@@ -99,6 +103,7 @@ const pastLumonCEOs = [
       Moniker: 'Burt G.',
       Outie: 'Burt Goodman',
       Position: 'Team lead for Optics & Design',
+      image: '/burt.jpg'
     },   
     {
       FirstName: 'Harmony',
@@ -106,6 +111,7 @@ const pastLumonCEOs = [
       Moniker: 'Harmony C.',
       Outie: 'N/A',
       Position: 'Executive',
+      image: '/harmony.jpg'
     },   
     {
       FirstName: 'Seth',
@@ -113,6 +119,7 @@ const pastLumonCEOs = [
       Moniker: 'Seth M.',
       Outie: 'N/A',
       Position: 'Oversees the severed floor of Lumon Industries',
+      image: '/seth.webp',
     }
   ]
 
@@ -121,5 +128,29 @@ const pastLumonCEOs = [
         staff: staff
     })
 })
+
+    app.get('/staff/:name', (req, res) => {
+        const name = req.params.name
+        const employee = staff.find(element => element.FirstName === name)
+        res.render('employee.ejs', {
+            name: name,
+            employee: employee
+        })
+    })
+
+    app.get('/intranet', (req, res) => {
+        res.render('intranet.ejs', {
+        })
+    })
+
+    app.get('/intranet/OrderBusinessCards', (req, res) => {
+        res.render('businesscards.ejs', {
+        })
+    })
+
+    app.get('/Careers', (req,res) => {
+        res.render('careers.ejs', {    
+        })
+    })
 
 app.listen(3000);
