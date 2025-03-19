@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumon</title>
+    <link rel="stylesheet" href="/css/app.css">    
+</head>
+<body>
+    <%- include('./partials/nav') %>
+   <h1>Lumon CEOs Throughout the Years</h1>
+    <% pastLumonCEOs.forEach((CEO) => { %>
+   
+    <h2><%= CEO.name %></h2> 
+    <li><%=`CEO Tenure: ${CEO.time} `%></li>
+    <li><%= CEO.notes %></li>                            
+    <% }); %>
+</body>
+</html>  
+

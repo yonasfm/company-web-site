@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumon</title>
+    <link rel="stylesheet" href="/css/app.css">    
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <% staff.forEach((member) => { %>
+        <ul>
+            <h3><%=  member.FirstName %> <%= member.LastName  %></h3>
+            <li><%= member.Moniker %></li>
+            <li><%= member.Outie %></li>
+            <li><%= member.Position %></li>
+        </ul>
+    <% }) %>
+</body>
+</html>
